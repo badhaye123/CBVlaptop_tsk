@@ -1,0 +1,40 @@
+{% extends 'laptop_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br><br>
+<div class="container">
+    <table class="table table-hover table-dark">
+        <tr>
+            <th>Laptop_name</th>
+            <th>Manufacturer</th>
+            <th>RAM</th>
+            <th>ROM</th>
+            <th>Weight</th>
+            <th>Processer</th>
+            <th>Price</th>
+        </tr>
+        {% for i in object_list %}
+            <tr>
+                <td>{{i.laptop_name}}</td>
+                <td>{{i.laptop_Manufacturer}}</td>
+                <td>{{i.RAM}}</td>
+                <td>{{i.ROM}}</td>
+                <td>{{i.weight}}</td>
+                <td>{{i.processor}}</td>
+                <td>{{i.price}}</td>
+                <td>
+                    <a href="{% url 'update' i.id %}">
+                    <button class="btn btn-primary">Update</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'delete' i.id %}">
+                    <button class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
